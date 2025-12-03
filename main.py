@@ -126,3 +126,43 @@ def main():
     timeout = args.timeout
 
     accounts = dumpor(name)
+
+ if accounts["user"] == None:
+        print(accounts["error"])
+    else:
+        for account in accounts["user"]:
+            name_f, email_f, phone_f = 0, 0, 0
+            infos = getInfo(account[1:], sessionsId)
+            if infos["user"] == None:
+                print(infos["error"])
+            else:
+                infos = infos["user"]
+
+                print("\nInformation about      : " + infos["username"])
+                if(infos["full_name"].lower() == name.lower()):
+                    print(Fore.GREEN + "Full Name              : " +
+                          infos["full_name"] + " \u2713")
+                    name_f = 1
+                else:
+                    print("Full Name              : " + infos["full_name"])
+                print("User ID                : " + infos["userID"])
+                print("Verified               : " + str(infos['is_verified']))
+                print("Is business Account    : " + str(infos["is_business"]))
+                print("Is private Account     : " + str(infos["is_private"]))
+                print("Followers              : " +
+                      str(infos["follower_count"]))
+                print("Following              : " +
+                      str(infos["following_count"]))
+                print("Number of posts        : " + str(infos["media_count"]))
+                print("External URL           : " + infos["external_url"])
+                print("Biography              : " + infos["biography"])
+                if "public_email" in infos.keys():
+                    if infos["public_email"] != '':
+                        if(email != ' ' and infos["public_email"][0] == email[0] and infos["public_email"].split('@')[0][-1] == email.split('@')[0][-1]
+                                    and infos["public_email"].split('@')[1] == email.split('@')[1]):
+                            print(Fore.GREEN + "Public email           : " +
+                                  infos["public_email"] + " \u2713")
+                            email_f = 1
+                        else:
+                            print("Public email           : " +
+                                  infos["public_email"])
