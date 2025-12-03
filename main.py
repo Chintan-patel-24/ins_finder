@@ -68,3 +68,37 @@ def advanced_lookup(username):
                 'ig_sig_key_version': SIG_KEY_VERSION
                 }
         return data
+
+    data = generate_signature(json.dumps(generate_data(username)))
+    headers = {
+        "Accept-Language": "en-US",
+        "User-Agent": "Instagram 101.0.0.15.120",
+        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+        "Accept-Encoding": "gzip, deflate",
+        "X-FB-HTTP-Engine": "Liger",
+        "Connection": "close"}
+    try:
+        r = httpx.post(USERS_LOOKUP_URL, headers=headers, data=data)
+        rep = r.json()
+        return({"user": rep, "error": None})
+    except:
+        return({"user": None, "error": "rate limit"})
+
+
+def dumpor(name):
+    url = "https://dumpor.com/search?query="
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
+
+    req = url + name.replace(" ", "+")
+
+    try:
+        account_list = []
+        response = requests.get(req, headers=headers)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        accounts = soup.findAll('a', {"class": "profile-name-link"})
+        for account in accounts:
+            account_list.append(account.text)
+        return({"user": account_list, "error": None})
+    except:
+        return({"user": None, "error": "rate limit"})
