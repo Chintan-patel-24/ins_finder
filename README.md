@@ -2,7 +2,8 @@
   
 ## ins_finder
 
-<div>
+</div>
+
 
 # 💬 Description
 **yesitsme** is a simple Python script which tries to find Instagram account associated with a specific name, e-mail and phone number.
