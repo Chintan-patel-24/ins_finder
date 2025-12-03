@@ -102,3 +102,27 @@ def dumpor(name):
         return({"user": account_list, "error": None})
     except:
         return({"user": None, "error": "rate limit"})
+
+def main():
+    banner()
+    parser = argparse.ArgumentParser()
+    required = parser.add_argument_group('required arguments')
+    parser.add_argument('-s', '--sessionid',
+                        help="Instagram session ID", required=True)
+    parser.add_argument(
+        '-n', '--name', help="Target name & surname", required=True)
+    parser.add_argument('-e', '--email', help="Target email", required=True)
+    parser.add_argument(
+        '-p', '--phone', help="Target phone number", required=True)
+    parser.add_argument('-t', '--timeout',
+                        help="Timeout between requests", required=False)
+
+    args = parser.parse_args()
+
+    sessionsId = args.sessionid
+    name = args.name
+    email = args.email
+    phone = args.phone
+    timeout = args.timeout
+
+    accounts = dumpor(name)
