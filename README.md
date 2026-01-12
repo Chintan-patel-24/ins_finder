@@ -1,12 +1,18 @@
 <div align=center>
-  
-## ins_finder
+
+<pre>
+  ___ _   _  ___ 
+ / _ \ | | |/ _ \
+|  __/ |_| |  __/
+ \___|\__, |\___|
+      |___/      
+</pre>
 
 </div>
 
 
 # 💬 Description
-**i** is a simple Python script which tries to find Instagram account associated with a specific name, e-mail and phone number.
+**eye** is a simple Python script which tries to find Instagram account associated with a specific name, e-mail and phone number.
 Leveraging dumpor.com indexing capabilities, it retrieves all usernames associated with a certain name and automatically compares the fetched toutatis obfuscated e-mail/phone with the given one, saving time and energy while doing online investigations.  
 
 
