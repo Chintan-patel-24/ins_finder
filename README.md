@@ -37,7 +37,6 @@ eva@paradise:~$ python3 yesitsme.py -s 5t3El3650d4Z7A3jA2%Y1R70vnYn%36U3 -n "Joh
 ```
 
 ## Output
-<img src="https://github.com/blackeko/yesitsme/blob/media/screenshot_1.png">
 
 Three levels of match:
 - **HIGH**: name, e-mail and phone number (obfuscated) match; 
